@@ -12,10 +12,10 @@
     width: 100%;
 }
 
-/* Clock styles */
+/*Estilo de Relógio*/
 .circle {
     fill: none;
-    stroke: #000;
+    stroke: rgb(90, 90, 90);
     stroke-width: 9;
     stroke-miterlimit: 10;
 }

@@ -1,23 +1,23 @@
-const PONTEIROHORA = document.querySelector("#hour");
-const PONTEIROMINUTO = document.querySelector("#minute");
-const PONTEIROSEGUNDO = document.querySelector("#second");
+const POINTERHOUR = document.querySelector("#hour");
+const POINTERMINUTE = document.querySelector("#minute");
+const POINTERSECOND = document.querySelector("#second");
 
-function executarRelogio(){ 
-    var data = new Date();
-    console.log(data);
+function runClock(){ 
+    var catchData = new Date();
+    console.log(catchData);
     
-    let hr = data.getHours();
-    let min = data.getMinutes();
-    let seg = data.getSeconds();
+    let hr = catchData.getHours();
+    let min = catchData.getMinutes();
+    let seg = catchData.getSeconds();
     console.log("Hora: " + hr + " Minuto: " + min + " Segundo: " + seg);
 
-    let posicaoHr = (hr*360/12)+(min*(360/60)/12);
-    let posicaoMin = (min*360/60)+(seg*(360/60)/60);
-    let posicaoSeg = seg*360/60;
+    let posHr = (hr*360/12)+(min*(360/60)/12);
+    let posMin = (min*360/60)+(seg*(360/60)/60);
+    let posSeg = seg*360/60;
 
-    PONTEIROHORA.style.transform = "rotate(" + posicaoHr + "deg)";
-    PONTEIROMINUTO.style.transform = "rotate(" + posicaoMin + "deg)";
-    PONTEIROSEGUNDO.style.transform = "rotate(" + posicaoSeg + "deg)";
+    POINTERHOUR.style.transform = "rotate(" + posHr + "deg)";
+    POINTERMINUTE.style.transform = "rotate(" + posMin + "deg)";
+    POINTERSECOND.style.transform = "rotate(" + posSeg + "deg)";
 }
 
-var intervalo = setInterval(executarRelogio, 1000);
+var intervalo = setInterval(runClock, 1000);
