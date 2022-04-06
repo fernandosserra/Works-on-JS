@@ -4,10 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js" defer></script>
-    <title>Teste sua velocidade de Digitação</title>
+    <script src="script.js" async></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i,900,900i" type="text/css" media="all">
+    <link rel="stylesheet" href="style.css">
+    <title>Velocidade de Digitação em JS</title>
 </head>
+
 <body>
+    <header class="masterHead">
+        <h1>Teste sua Velocidade de Digitação:</h1>
+    </header>
+    <main class="mClass">
+        <article class="introArticle">
+            <p>Este é um teste de digitação. Seu objetivo é duplicar o texto fornecido no menor tempo possível.</p>
+        </article><!--Test Introduction-->
+        <section class="test-area">
+            <div id="origin-text">
+                <p>O texto para o teste.</p>
+            </div><!--Origin-Text-->
+
+            <div class="test-wrapper">
+                <textarea id="test-area" name="textArea" rows="6" placeholder="O timer começa quando você digitar a primeira letra!"></textarea>
+            </div><!--.test-wrapper-->
+
+            <div class="meta">
+                <section id="clock">
+                    <div class="timer">00:00:00</div>
+                </section>
+
+                <button id="resetBtn">Começar novamente</button>
+            </div><!--.meta-->
+        </section><!--test-area-->
+
+    </main>
     
     
 </body>
