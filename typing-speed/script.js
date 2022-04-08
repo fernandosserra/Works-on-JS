@@ -1,10 +1,12 @@
 const testWrapper = document.querySelector(".test-wrapper");
 const testArea = document.querySelector("#test-area");
 const originText = document.querySelector("#origin-text p").innerHTML;
-const resetButton = document.querySelector("#reset");
+const resetBtn = document.querySelector("#resetBtn");
 const theTimer = document.querySelector(".timer");
 
 timer = [0,0,0,0];
+var interval;
+var timerRunning = false;
 
 // Adiciona zero inicial aos números <= 9 (apenas para estética):
 function leadingZero(time) {
@@ -28,24 +30,50 @@ function runTimer() {
 // Verifica se texto digitado com o fornecido na página:
 function spellCheck() { 
     let textEntered = testArea.value;
-    console.log(textEntered);
+    let originTextMatch = originText.substring(0, textEntered.length);
+   
+    //Verifica se a digitação está correta.
+    if (textEntered == originText){
+        clearInterval(interval);
+        //Se o texto estiver correto, a borda assumirá um tom de verde
+        testWrapper.style.borderColor = "lime";
+    } else {
+        if (textEntered == originTextMatch){
+            //Se o texto estiver correto, mas incompleto, um tom de azul
+            testWrapper.style.borderColor = "#65CCf3";
+        } else {
+            //Se o texto estiver incorreto, um tom de laranja.
+            testWrapper.style.borderColor = "#E95D0F";
+        }
+    }
 }
 
-// Inicia o cronômetro:
+// Inicia o cronômetro.
 function start(){
    let textEnteredLength = testArea.value.length;
-    if (textEnteredLength === 0) {
-        setInterval(runTimer, 10);
+    if (textEnteredLength === 0 && !timerRunning) {
+        timerRunning = true;
+        interval = setInterval(runTimer, 10);
     }
-    console.log(textEnteredLength);
 }
 
-// Função de recomeçar:
+// Reinicia o teste de velocidade
 function reset() {
-    console.log("O botão de recomeçar foi clicado.");
+    //Limpando os intervalos de tempo e chaves de incio de timer.
+    clearInterval(interval);
+    interval = null;
+    timer = [0,0,0,0];
+    timerRunning = false;
+
+    //Redefinindo os textos para o padrão
+    testArea.value = "";
+    theTimer.innerHTML = "00:00:00";
+    
+    //Redefinindo a Borda para o padrão neutro.
+    testWrapper.style.borderColor = "gray";
 }
 
 // Listeners de eventos para entrada de teclado e o botão de recomeçar:
 testArea.addEventListener("keypress", start, false);
 testArea.addEventListener("keyup", spellCheck, false);
-resetButton.addEventListener("click", reset, false);
+resetBtn.addEventListener("click", reset, false);
